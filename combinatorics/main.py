@@ -19,16 +19,18 @@ def count_wins(dice1: List[int], dice2: List[int]):
 def find_the_best_dice(dices: List[List[int]]):
     assert all(len(dice) == 6 for dice in dices)
 
-    winners = []
-    for i, j in it.combinations(range(len(dices)), 2):
-        wins_i, wins_j = count_wins(dices[i], dices[j])
+    for i, dice_i in enumerate(dices):
+        winners = []
 
-        if wins_i > wins_j: winners.append(i)
-        if wins_j > wins_i: winners.append(j)
+        for j, dice_j in enumerate(dices):
+            if i == j: continue
+            wins_i, wins_j = count_wins(dice_i, dice_j)
+            
+            if wins_i > wins_j: winners.append(i)
+            if wins_j > wins_i: winners.append(j)
 
-    if len(set(winners)) == 1:
-        return winners[0]
-
+        if len(set(winners)) == 1:
+            return winners[i]
     return -1
 
 
