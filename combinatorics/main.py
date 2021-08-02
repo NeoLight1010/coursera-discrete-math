@@ -29,7 +29,7 @@ def find_the_best_dice(dices: List[List[int]]):
             if wins_j > wins_i: winners.append(j)
 
         if len(set(winners)) == 1:
-            return winners[i]
+            return winners[0]
     return -1
 
 
