@@ -1,4 +1,4 @@
-from main import count_wins, find_the_best_dice
+from main import compute_strategy, count_wins, find_the_best_dice
 
 
 def test_count_wins():
@@ -28,3 +28,13 @@ def test_find_the_best_dice():
         )
         == -1
     )
+
+
+def test_compute_strategy():
+    assert compute_strategy(
+        [[1, 1, 4, 6, 7, 8], [2, 2, 2, 6, 7, 7], [3, 3, 3, 5, 5, 8]]
+    ) == {"choose_first": False, 0: 1, 1: 2, 2: 0}
+
+    assert compute_strategy(
+        [[4, 4, 4, 4, 0, 0], [7, 7, 3, 3, 3, 3], [6, 6, 2, 2, 2, 2], [5, 5, 5, 1, 1, 1]]
+    ) == {"choose_first": True, "first_dice": 1}
