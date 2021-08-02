@@ -1,5 +1,4 @@
 from typing import List
-import itertools as it
 
 
 def count_wins(dice1: List[int], dice2: List[int]):
